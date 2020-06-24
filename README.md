@@ -1,6 +1,6 @@
 ## Setup
 
-To start a P100 VM - Pls change location, host name, domain
+To start a P100 VM - Pls change location, host name, domain, ssh key
 
 ```
 ibmcloud sl vs create --datacenter=lon06 --hostname=p100 --domain=dima.com --image=2263543 --billing=hourly  --network 1000 --key=1418191 --flavor AC1_8X60X100 --san
