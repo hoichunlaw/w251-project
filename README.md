@@ -6,13 +6,9 @@ To start a P100 VM - Pls change location, host name, domain, ssh key
 ibmcloud sl vs create --datacenter=lon06 --hostname=p100 --domain=dima.com --image=2263543 --billing=hourly  --network 1000 --key=1418191 --flavor AC1_8X60X100 --san
 ```
 
-SSH into the P100 VM, then run below to clone this repo, then setup s3fs to access IBM cloud storage.
+SSH into the P100 VM, then setup s3fs to mount IBM cloud storage.
 
 ```
-git clone https://github.com/hoichunlaw/w251-project.git
-cd w251-project
-mkdir data
-
 sudo apt-get update
 sudo apt-get install automake autotools-dev g++ git libcurl4-openssl-dev libfuse-dev libssl-dev libxml2-dev make pkg-config
 git clone https://github.com/s3fs-fuse/s3fs-fuse.git
@@ -25,6 +21,14 @@ sudo make install
 
 echo "bf87c595976145c386349f53e2517493:a61ba4b36c06b17ce4a5cf1cb087821b79fb293c42b1e617" > $HOME/.cos_creds
 chmod 600
+```
+
+Clone this repo and mount to my IBM Object storage
+
+```
+git clone https://github.com/hoichunlaw/w251-project.git
+cd w251-project
+mkdir data
 
 sudo s3fs audiodata /root/w251-project/data -o passwd_file=$HOME/.cos_creds -o sigv2 -o use_path_request_style -o url=https://s3.jp-tok.cloud-object-storage.appdomain.cloud
 ```
