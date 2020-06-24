@@ -11,6 +11,7 @@ SSH into the P100 VM, then run below to clone this repo, then setup s3fs to acce
 ```
 git clone https://github.com/hoichunlaw/w251-project.git
 cd w251-project
+mkdir data
 
 sudo apt-get update
 sudo apt-get install automake autotools-dev g++ git libcurl4-openssl-dev libfuse-dev libssl-dev libxml2-dev make pkg-config
@@ -31,13 +32,13 @@ sudo s3fs audiodata /root/w251-project/data -o passwd_file=$HOME/.cos_creds -o s
 build docker container
 
 ```
-docker build -t w251-project -f Dockerfile.tf-w251-project .
+docker build -t tf/w251-project -f Dockerfile.tf-w251-project .
 ```
 
 docker run
 
 ```
-nvidia-docker run -d --name w251-project -p 8888:8888 -v /root/w251-project:/project w251-project
+nvidia-docker run -d --name w251-project -p 8888:8888 -v /root/w251-project:/project tf/w251-project
 docker logs w251-project
 ```
 
