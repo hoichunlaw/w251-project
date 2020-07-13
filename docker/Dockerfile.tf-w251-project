@@ -1,6 +1,11 @@
 #FROM tensorflow/tensorflow:latest-gpu
 FROM tensorflow/tensorflow:2.2.0-gpu
 
+COPY libcudnn7_7.6.5.32-1+cuda10.2_amd64.deb /project/libcudnn7_7.6.5.32-1+cuda10.2_amd64.deb
+COPY AudioAugmentation.ipynb /project/AudioAugmentation.ipynb
+
+RUN dpkg -i /project/libcudnn7_7.6.5.32-1+cuda10.2_amd64.deb
+
 RUN apt-get update
 RUN apt-get install -y libsndfile1
 RUN apt-get install -y ffmpeg
@@ -18,9 +23,12 @@ RUN pip3 install tqdm
 RUN pip3 install keras==2.4.2
 RUN pip3 install jupyter
 
-RUN mkdir /project
+# RUN mkdir /project
 WORKDIR /project
 RUN mkdir data
+RUN mkdir w251
+RUN mkdir models
+COPY Demo_v1.ipynb /project
 
 EXPOSE 8888
 CMD jupyter notebook  --no-browser --ip=0.0.0.0 --allow-root
