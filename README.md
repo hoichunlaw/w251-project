@@ -32,7 +32,7 @@ Go back to root directory. Clone this repo and mount to IBM Object storage
 
 ```
 # after going to root dir
-git clone https://github.com/abhisha1991/w251-project.git
+git clone https://github.com/hoichunlaw/w251-project.git
 cd w251-project
 mkdir data
 
