@@ -6,20 +6,6 @@ Additionally, if you're interested in learning further on DSP, see [this](https:
 
 ## Experimental (Optional Setup)
 
-By default the VMs provisioned are already equipped with CUDA. For example the V100 VM comes with CUDA 10.1. Can be confirmed with `/usr/local/cuda/bin/nvcc --version` or `nvidia-smi`
-
-CUDNN needs to be manually installed. Here is the deb package link: 
-```
-https://drive.google.com/file/d/1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv/view?usp=sharing
-```
-
-Experimental and Optional (follow the steps in this [link](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt_301/tensorrt-install-guide/index.html) to install Tensor RT). 
-
-For convenience, here is the deb package link for TensorRT: 
-```
-https://drive.google.com/file/d/1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT/view?usp=sharing
-```
-
 Make a downloads folder to save the deb files
 ```
 mkdir downloads
@@ -28,6 +14,13 @@ cd downloads
 
 #### CUDNN Setup
 
+By default the VMs provisioned are already equipped with CUDA. For example the V100 VM comes with CUDA 10.1. Can be confirmed with `/usr/local/cuda/bin/nvcc --version` or `nvidia-smi`
+
+CUDNN needs to be manually installed. Here is the deb package link: 
+```
+https://drive.google.com/file/d/1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv/view?usp=sharing
+```
+
 ```
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv" -O libcudnn7_7.6.5.32-1+cuda10.1_amd64.deb && rm -rf /tmp/cookies.txt
 ```
@@ -35,6 +28,14 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 [Verify](https://medium.com/@changrongko/nv-how-to-check-cuda-and-cudnn-version-e05aa21daf6c) if CUDA and CUDNN are installed on the VM
 
 #### Tensor RT Setup
+
+
+For convenience, here is the deb package link for TensorRT: 
+```
+https://drive.google.com/file/d/1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT/view?usp=sharing
+```
+
+Experimental and Optional (follow the steps in this [link](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt_301/tensorrt-install-guide/index.html) to install Tensor RT). 
 
 ```
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT" -O nv-tensorrt-repo-ubuntu1604-cuda10.0-trt7.0.0.11-ga-20191216_1-1_amd64.deb && rm -rf /tmp/cookies.txt
