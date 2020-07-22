@@ -2,6 +2,12 @@
 
 Read [this](https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53) and [this](https://towardsdatascience.com/getting-to-know-the-mel-spectrogram-31bca3e2d9d0) link
 
+## Experimental
+
+Experimental and Optional (follow the steps 1-4 in this [link](https://medium.com/@birkann/install-tensorflow-2-0-with-gpu-support-and-jupyter-notebook-db0eeb3067a1) to install Tensor RT, CUDA)
+
+For errors relating to `gpgkeys: protocol "https" not supported` - run the following: `sudo apt-get install gnupg-curl`
+
 ## Setup
 
 Start a P100 VM - Change ssh key (optionally change location if Vm not available)
@@ -42,10 +48,6 @@ mkdir data
 
 sudo s3fs audiodata /root/w251-project/data -o passwd_file=$HOME/.cos_creds -o sigv2 -o use_path_request_style -o url=https://s3.jp-tok.cloud-object-storage.appdomain.cloud
 ```
-
-Experimental and Optional (follow the steps 1-4 in this [link](https://medium.com/@birkann/install-tensorflow-2-0-with-gpu-support-and-jupyter-notebook-db0eeb3067a1) to install Tensor RT, CUDA)
-
-For errors relating to `gpgkeys: protocol "https" not supported` - run the following: `sudo apt-get install gnupg-curl`
 
 Build docker container
 
