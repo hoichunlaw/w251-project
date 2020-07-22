@@ -14,6 +14,10 @@ cd downloads
 
 #### CUDA and CUDNN Setup
 
+Note the instructions have been derived from [here](https://gist.github.com/matheustguimaraes/43e0b65aa534db4df2918f835b9b361d)
+
+Also note that the VMs we provision are on Ubuntu 16.04 vs 18. Most instructions out there are specific to Ubuntu 18, which may or may not work for us.
+
 By default the VMs provisioned are already equipped with CUDA. For example the V100 VM comes with CUDA 10.1. Can be confirmed with `/usr/local/cuda/bin/nvcc --version` or `nvidia-smi`
 
 CUDNN needs to be manually installed. Here are the ready download links to the run time, dev sdk and code samples (for testing CUDNN):
