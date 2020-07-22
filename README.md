@@ -13,14 +13,26 @@ CUDNN needs to be manually installed. Here is the deb package link:
 https://drive.google.com/file/d/1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv/view?usp=sharing
 ```
 
-[Verify](https://medium.com/@changrongko/nv-how-to-check-cuda-and-cudnn-version-e05aa21daf6c) if CUDA and CUDNN are installed on the VM
-
 Experimental and Optional (follow the steps in this [link](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt_301/tensorrt-install-guide/index.html) to install Tensor RT). 
 
 For convenience, here is the deb package link for TensorRT: 
 ```
 https://drive.google.com/file/d/1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT/view?usp=sharing
 ```
+
+CUDNN Setup
+
+```
+mkdir downloads
+cd downloads
+```
+
+```
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv" -O libcudnn7_7.6.5.32-1+cuda10.1_amd64.deb && rm -rf /tmp/cookies.txt
+```
+
+[Verify](https://medium.com/@changrongko/nv-how-to-check-cuda-and-cudnn-version-e05aa21daf6c) if CUDA and CUDNN are installed on the VM
+
 
 ## Setup
 
