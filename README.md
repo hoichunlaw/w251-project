@@ -1,3 +1,7 @@
+## Introduction to Mel Spectrograms
+
+Read [this](https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53) and [this](https://towardsdatascience.com/getting-to-know-the-mel-spectrogram-31bca3e2d9d0) link
+
 ## Setup
 
 Start a P100 VM - Change ssh key (optionally change location if Vm not available)
@@ -8,7 +12,7 @@ You can alternatively start a V100 VM by changing `--flavor AC1_8X60X100` to `--
 ibmcloud sl vs create --datacenter=lon06 --hostname=p100 --domain=ucb.com --image=2263543 --billing=hourly  --network 1000 --key=<KeyID> --flavor AC1_8X60X100 --san
 ```
 
-SSH into the P100 VM, then setup s3fs to mount IBM cloud storage.
+SSH into the VM, then setup s3fs to mount IBM cloud storage.
 
 ```
 sudo apt-get update
@@ -26,7 +30,7 @@ Create cos creds file for IBM storage
 
 ```
 echo "bf87c595976145c386349f53e2517493:a61ba4b36c06b17ce4a5cf1cb087821b79fb293c42b1e617" > $HOME/.cos_creds
-chmod 600 .cos_creds
+chmod 600 $HOME/.cos_creds
 ```
 Go back to root directory. Clone this repo and mount to IBM Object storage
 
@@ -38,6 +42,8 @@ mkdir data
 
 sudo s3fs audiodata /root/w251-project/data -o passwd_file=$HOME/.cos_creds -o sigv2 -o use_path_request_style -o url=https://s3.jp-tok.cloud-object-storage.appdomain.cloud
 ```
+
+Experimental and Optional (follow the steps 1-4 in this [link](https://medium.com/@birkann/install-tensorflow-2-0-with-gpu-support-and-jupyter-notebook-db0eeb3067a1) to install Tensor RT, CUDA)
 
 Build docker container
 
