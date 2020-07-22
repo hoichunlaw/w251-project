@@ -20,7 +20,7 @@ For convenience, here is the deb package link for TensorRT:
 https://drive.google.com/file/d/1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT/view?usp=sharing
 ```
 
-CUDNN Setup
+#### CUDNN Setup
 
 ```
 mkdir downloads
@@ -33,6 +33,11 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 
 [Verify](https://medium.com/@changrongko/nv-how-to-check-cuda-and-cudnn-version-e05aa21daf6c) if CUDA and CUDNN are installed on the VM
 
+#### Tensor RT Setup
+
+```
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT" -O nv-tensorrt-repo-ubuntu1604-cuda10.0-trt7.0.0.11-ga-20191216_1-1_amd64.deb && rm -rf /tmp/cookies.txt
+```
 
 ## Setup
 
