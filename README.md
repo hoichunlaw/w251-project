@@ -16,16 +16,45 @@ cd downloads
 
 By default the VMs provisioned are already equipped with CUDA. For example the V100 VM comes with CUDA 10.1. Can be confirmed with `/usr/local/cuda/bin/nvcc --version` or `nvidia-smi`
 
-CUDNN needs to be manually installed. Here is the deb package link: 
-```
-https://drive.google.com/file/d/1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv/view?usp=sharing
-```
+CUDNN needs to be manually installed. Here are the ready download links to the run time, dev sdk and code samples (for testing CUDNN):
 
 ```
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv" -O libcudnn7_7.6.5.32-1+cuda10.1_amd64.deb && rm -rf /tmp/cookies.txt
 ```
+```
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=16vZc8UgKkyJRgRGm8JuO0GOYWCdhEGMu' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=16vZc8UgKkyJRgRGm8JuO0GOYWCdhEGMu" -O libcudnn7-dev_7.6.5.32-1+cuda10.1_amd64.deb && rm -rf /tmp/cookies.txt
+```
 
-[Verify](https://medium.com/@changrongko/nv-how-to-check-cuda-and-cudnn-version-e05aa21daf6c) if CUDA and CUDNN are installed on the VM
+```
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1FWXRwsNqPEflCmVIyPrDiBb2_dVGRPrr' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1FWXRwsNqPEflCmVIyPrDiBb2_dVGRPrr" -O libcudnn7-doc_7.6.5.32-1+cuda10.1_amd64.deb && rm -rf /tmp/cookies.txt
+```
+
+After downloading, we install the deb packages for each
+```
+sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.1_amd64.deb
+sudo dpkg -i libcudnn7-doc_7.6.5.32-1+cuda10.1_amd64.deb
+sudo dpkg -i libcudnn7-dev_7.6.5.32-1+cuda10.1_amd64.deb
+```
+
+Export some path variables and refresh the bashrc file
+```
+export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda-10.1/bin:$PATH
+source ~/.bashrc 
+```
+
+For testing we will run MNIST code sample to run with CUDNN
+```
+# Copy code samples to downloads folder for convenience
+
+cp -a /usr/src/cudnn_samples_v7/ ~/downloads/cudnn_samples_v7/
+cd mnistCUDNN
+make clean && make
+./mnistCUDNN
+```
+If you see no errors from the above sample, CUDNN is installed on the machine.
+
+Alternatively, [Verify](https://medium.com/@changrongko/nv-how-to-check-cuda-and-cudnn-version-e05aa21daf6c) if CUDA and CUDNN are installed on the VM
 
 #### Tensor RT Setup
 
