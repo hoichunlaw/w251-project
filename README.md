@@ -48,7 +48,7 @@ For testing we will run MNIST code sample to run with CUDNN
 # Copy code samples to downloads folder for convenience
 
 cp -a /usr/src/cudnn_samples_v7/ ~/downloads/cudnn_samples_v7/
-cd mnistCUDNN
+cd ~/downloads/cudnn_samples_v7/mnistCUDNN
 make clean && make
 ./mnistCUDNN
 ```
