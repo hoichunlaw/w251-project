@@ -45,6 +45,8 @@ sudo s3fs audiodata /root/w251-project/data -o passwd_file=$HOME/.cos_creds -o s
 
 Experimental and Optional (follow the steps 1-4 in this [link](https://medium.com/@birkann/install-tensorflow-2-0-with-gpu-support-and-jupyter-notebook-db0eeb3067a1) to install Tensor RT, CUDA)
 
+For errors relating to `gpgkeys: protocol "https" not supported` - run the following: `sudo apt-get install gnupg-curl`
+
 Build docker container
 
 ```
