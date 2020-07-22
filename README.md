@@ -2,6 +2,8 @@
 
 Read [this](https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53) and [this](https://towardsdatascience.com/getting-to-know-the-mel-spectrogram-31bca3e2d9d0) link
 
+Additionally, if you're interested in learning further on DSP, see [this](https://www.youtube.com/watch?v=NA0TwPsECUQ)
+
 ## Experimental
 
 Experimental and Optional (follow the steps 1-4 in this [link](https://medium.com/@birkann/install-tensorflow-2-0-with-gpu-support-and-jupyter-notebook-db0eeb3067a1) to install Tensor RT, CUDA)
