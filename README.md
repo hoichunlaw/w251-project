@@ -12,7 +12,7 @@ mkdir downloads
 cd downloads
 ```
 
-#### CUDNN Setup
+#### CUDA and CUDNN Setup
 
 By default the VMs provisioned are already equipped with CUDA. For example the V100 VM comes with CUDA 10.1. Can be confirmed with `/usr/local/cuda/bin/nvcc --version` or `nvidia-smi`
 
