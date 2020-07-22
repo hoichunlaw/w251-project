@@ -6,14 +6,14 @@ Additionally, if you're interested in learning further on DSP, see [this](https:
 
 ## Experimental (Optional Setup)
 
-Experimental and Optional (follow the steps 1-4 in this [link](https://medium.com/@birkann/install-tensorflow-2-0-with-gpu-support-and-jupyter-notebook-db0eeb3067a1) to install Tensor RT, CUDA)
-
 By default the VMs provisioned are already equipped with CUDA. For example the V100 VM comes with CUDA 10.1. Can be confirmed with `/usr/local/cuda/bin/nvcc --version` or `nvidia-smi`
 
 CUDNN needs to be manually installed. Here is the deb package link: 
 https://developer.nvidia.com/compute/machine-learning/cudnn/secure/7.6.5.32/Production/10.1_20191031/Ubuntu16_04-x64/libcudnn7_7.6.5.32-1%2Bcuda10.1_amd64.deb
 
 [Verify](https://medium.com/@changrongko/nv-how-to-check-cuda-and-cudnn-version-e05aa21daf6c) if CUDA and CUDNN are installed on the VM
+
+Experimental and Optional (follow the steps in this [link](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt_301/tensorrt-install-guide/index.html) to install Tensor RT)
 
 ## Setup
 
