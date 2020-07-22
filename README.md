@@ -2,6 +2,8 @@
 
 Start a P100 VM - Change ssh key (optionally change location if Vm not available)
 
+You can alternatively start a V100 VM by changing `--flavor AC1_8X60X100` to `--flavor AC2_8X60X100`
+
 ```
 ibmcloud sl vs create --datacenter=lon06 --hostname=p100 --domain=ucb.com --image=2263543 --billing=hourly  --network 1000 --key=<KeyID> --flavor AC1_8X60X100 --san
 ```
