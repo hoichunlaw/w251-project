@@ -56,6 +56,15 @@ cd ~/downloads/cudnn_samples_v7/mnistCUDNN
 make clean && make
 ./mnistCUDNN
 ```
+
+Can verify libcudnn version here
+```
+root@v100-3:~/downloads# /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep libcudnn
+	libcudnn.so.7 -> libcudnn.so.7.6.5
+root@v100-3:~/downloads# 
+
+```
+
 If you see no errors from the above sample, CUDNN is installed on the machine.
 
 Alternatively, [Verify](https://medium.com/@changrongko/nv-how-to-check-cuda-and-cudnn-version-e05aa21daf6c) if CUDA and CUDNN are installed on the VM
