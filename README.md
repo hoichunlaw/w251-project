@@ -85,7 +85,7 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 ```
 sudo dpkg -i nv-tensorrt-repo-ubuntu1604-cuda10.0-trt7.0.0.11-ga-20191216_1-1_amd64.deb
 sudo apt-get update
-sudo apt-get install libnvinfer
+sudo apt-get install python3-libnvinfer
 
 # If that doesnt work, try
 sudo apt-get install -y --no-install-recommends python3-libnvinfer7=7.0.0-1+cuda10.0 python3-libnvinfer-dev=7.0.0-1+cuda10.0
