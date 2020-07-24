@@ -59,10 +59,8 @@ make clean && make
 
 Can verify libcudnn version here
 ```
-root@v100-3:~/downloads# /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep libcudnn
-	libcudnn.so.7 -> libcudnn.so.7.6.5
-root@v100-3:~/downloads# 
-
+/sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep libcudnn
+# output would be like	libcudnn.so.7 -> libcudnn.so.7.6.5
 ```
 
 If you see no errors from the above sample, CUDNN is installed on the machine.
