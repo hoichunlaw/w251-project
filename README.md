@@ -6,7 +6,7 @@ Additionally, if you're interested in learning further on DSP, see [this](https:
 
 ## Experimental (Optional Setup)
 
-Make a downloads folder to save the deb files
+Make a downloads folder to save the deb files (After setting up the VM in the main setup)
 ```
 mkdir downloads
 cd downloads
@@ -20,7 +20,7 @@ Also note that the VMs we provision are on Ubuntu 16.04 vs 18. Most instructions
 
 By default the VMs provisioned are already equipped with CUDA. For example the V100 VM comes with CUDA 10.1. Can be confirmed with `/usr/local/cuda/bin/nvcc --version` or `nvidia-smi`
 
-CUDNN needs to be manually installed. Here are the ready download links to the run time, dev sdk and code samples (for testing CUDNN):
+CUDNN needs to be manually installed. Here are the ready download links to the run time, dev sdk and code samples (for testing CUDNN), and the CUDA toolkit:
 
 ```
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1zu2Vbed6fUcizWb3E726E3uZKx2uVnNv" -O libcudnn7_7.6.5.32-1+cuda10.1_amd64.deb && rm -rf /tmp/cookies.txt
@@ -31,6 +31,10 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 
 ```
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1FWXRwsNqPEflCmVIyPrDiBb2_dVGRPrr' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1FWXRwsNqPEflCmVIyPrDiBb2_dVGRPrr" -O libcudnn7-doc_7.6.5.32-1+cuda10.1_amd64.deb && rm -rf /tmp/cookies.txt
+```
+
+```
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1pO2rzX4S0RLH0H9m78YTC4WhQjGVtQnv' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1pO2rzX4S0RLH0H9m78YTC4WhQjGVtQnv" -O cuda_10.1.105_418.39_linux.run && rm -rf /tmp/cookies.txt
 ```
 
 After downloading, we install the deb packages for each
