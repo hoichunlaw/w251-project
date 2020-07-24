@@ -36,8 +36,8 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 After downloading, we install the deb packages for each
 ```
 sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.1_amd64.deb
-sudo dpkg -i libcudnn7-doc_7.6.5.32-1+cuda10.1_amd64.deb
 sudo dpkg -i libcudnn7-dev_7.6.5.32-1+cuda10.1_amd64.deb
+sudo dpkg -i libcudnn7-doc_7.6.5.32-1+cuda10.1_amd64.deb
 ```
 
 Export some path variables and refresh the bashrc file
