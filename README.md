@@ -76,7 +76,7 @@ https://drive.google.com/file/d/1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT/view?usp=shari
 ```
 
 Follow the steps in this [link](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt_301/tensorrt-install-guide/index.html) to install Tensor RT
-But to summarize,
+But to summarize, from downloads folder created
 
 ```
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1TiF7wxK_14ZetBBxO-4voHAg9db3pWcT" -O nv-tensorrt-repo-ubuntu1604-cuda10.0-trt7.0.0.11-ga-20191216_1-1_amd64.deb && rm -rf /tmp/cookies.txt
@@ -90,6 +90,12 @@ sudo apt-get install libnvinfer
 # If that doesnt work, try
 sudo apt-get install -y --no-install-recommends python3-libnvinfer7=7.0.0-1+cuda10.0 python3-libnvinfer-dev=7.0.0-1+cuda10.0
 ```
+
+With sudo apt-get update, If you see an error like "The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED91CA3AC1160CD"
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED91CA3AC1160CD
+```
+
 ## Setup
 
 Start a P100 VM - Change ssh key (optionally change location if Vm not available)
