@@ -88,7 +88,7 @@ sudo apt-get update
 sudo apt-get install python3-libnvinfer
 
 # If that doesnt work, try
-sudo apt-get install -y --no-install-recommends python3-libnvinfer7=7.0.0-1+cuda10.0 python3-libnvinfer-dev=7.0.0-1+cuda10.0
+sudo apt-get install -y --no-install-recommends python3-libnvinfer=7.0.0-1+cuda10.0 python3-libnvinfer-dev=7.0.0-1+cuda10.0 libnvinfer7=7.0.0-1+cuda10.0 libnvinfer-dev=7.0.0-1+cuda10.0
 ```
 
 With sudo apt-get update, If you see an error like "The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED91CA3AC1160CD"
