@@ -11,10 +11,21 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import sounddevice as sd
+from PIL import Image
 import librosa
-import librosa.display
+import librosa.display as display
+from kapre.time_frequency import Melspectrogram
 import collections
+import tensorflow as tf
+from tensorflow.keras.preprocessing import image as keras_image
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+import numpy as np
+import os
 
+IM_SIZE = (224,224,3)
+input_saved_model_dir = '/home/carlos/w251-project/models/imgnet_mobilenet_v2_140_224/Fri_Jul_24_02_35_06_2020'
+classes = ["aldfly", "ameavo", "amebit", "amecro", "amegfi", "amekes", "amepip", "amered", "amerob", "amewig", 
+           "amewoo", "amtspa", "annhum", "astfly", "baisan", "baleag", "balori", "banswa", "barswa", "bawwar"]
 
 def int_or_str(text):
     """Helper function for argument parsing."""
@@ -22,7 +33,6 @@ def int_or_str(text):
         return int(text)
     except ValueError:
         return text
-
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument(
@@ -59,10 +69,13 @@ args = parser.parse_args(remaining)
 if any(c < 1 for c in args.channels):
     parser.error('argument CHANNEL: must be >= 1')
 mapping = [c - 1 for c in args.channels]  # Channel numbers start with 1
-q = queue.Queue()
+
 mpl.use('TKAgg', force=True)
 fig, ax = plt.subplots()
+q = queue.Queue()
 d = collections.deque(maxlen=10000)
+the_model = tf.keras.models.load_model(input_saved_model_dir)
+print(the_model.summary())
 
 def audio_callback(indata, frames, time, status):
     """This is called (from a separate thread) for each audio block."""
@@ -70,6 +83,15 @@ def audio_callback(indata, frames, time, status):
     #     print(status, file=sys.stderr)
     # Fancy indexing with mapping creates a (necessary!) copy:
     q.put(indata[::args.downsample, mapping])
+
+def my_decode_predictions(classes, preds, top=5):
+  results = []
+  for pred in preds:
+    top_indices = pred.argsort()[-top:][::-1]
+    result = [[classes[i], pred[i]] for i in top_indices]
+    result.sort(key=lambda x: x[1], reverse=True)
+    results.append(result)
+  return results
 
 try:
     stream = sd.InputStream(
@@ -79,19 +101,51 @@ try:
         try:
             while True:
                 # print("stream params", stream.blocksize, stream.samplerate, stream.samplesize, stream.latency)
+                sr=stream.samplerate
                 sd.sleep(3 * 1000)
                 data_raw = [(q.get_nowait()).flatten() for i in range(q.qsize())]
                 d.extend(data_raw)
                 frames = (np.hstack(d)).flatten()
-                melspec = librosa.feature.melspectrogram(y=frames, sr=stream.samplerate, n_mels=224, fmax=4000)
+                melspec = Melspectrogram(n_dft=1024, 
+                                    n_hop=256,
+                                    input_shape=(1, frames.shape[0]),
+                                    padding='same', sr=sr, n_mels=224, fmin=1400, fmax=sr/2,
+                                    power_melgram=2.0, return_decibel_melgram=True,
+                                    trainable_fb=False, trainable_kernel=False)(frames.reshape(1, 1, -1)).numpy()
+                melspec = melspec.reshape(melspec.shape[1], melspec.shape[2])
                 print(f"Frames array: {frames.shape}, Melspec array: {melspec.shape}")
-                data_out = librosa.core.power_to_db(melspec, ref=np.max)
-                librosa.display.specshow(data_out, y_axis='mel', fmax=4000, x_axis='time')
+                melplot = display.specshow(melspec, sr=sr)
+                melplot.set_frame_on(False)
+                plt.tight_layout(pad=0)
                 plt.draw()
                 plt.pause(0.0001)
                 plt.clf()
+                if (melspec.shape[1] >= IM_SIZE[0]):
+                    img=Image.frombuffer("RGBA", fig.canvas.get_width_height(),
+                         fig.canvas.buffer_rgba(), "raw", "RGBA", 0, 1)
+                    img = img.convert('RGB').resize(IM_SIZE[0:2])
+                    x = keras_image.img_to_array(img)
+                    # print(f"image shape: {x.shape}")
+                    x = preprocess_input(np.expand_dims(x, axis=0))
+                    preds = the_model.predict(x)
+                    print(f'\nPredicted: {my_decode_predictions(classes, preds, top=5)[0]}\n')
+
         except KeyboardInterrupt:
             pass
 
 except Exception as e:
     parser.exit(type(e).__name__ + ': ' + str(e))
+
+
+# # Optional image to test model prediction.
+# img_path = './aldfly1.png'
+
+# # Load the image for prediction.
+# img = image.load_img(img_path, target_size=(IMG_HEIGHT, IMG_HEIGHT))
+# x = image.img_to_array(img)
+# x = np.expand_dims(x, axis=0)
+# x = preprocess_input(x)
+
+# preds = the_model.predict(x)
+# # decode the results into a list of tuples (class, probability)
+# print('Predicted:', my_decode_predictions(classes, preds, top=20)[0])
