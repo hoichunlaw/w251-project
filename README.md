@@ -71,7 +71,7 @@ If you see no errors from the above sample, CUDNN is installed on the machine.
 
 Alternatively, [Verify](https://medium.com/@changrongko/nv-how-to-check-cuda-and-cudnn-version-e05aa21daf6c) if CUDA and CUDNN are installed on the VM
 
-#### Tensor RT Setup
+#### Tensor RT Setup (On Jetson only, for inference)
 
 
 For convenience, here is the deb package link for TensorRT: 
