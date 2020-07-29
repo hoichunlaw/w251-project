@@ -104,11 +104,16 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED91CA3AC1160CD
 
 Start a P100 VM - Change ssh key (optionally change location if Vm not available)
 
+```
+ibmcloud sl vs create --datacenter=tok02 --hostname=p100 --domain=ucb.com --image=2263543 --billing=hourly  --network 1000 --key=<KeyID> --flavor AC1_8X60X100 --san
+```
+
 You can alternatively start a V100 VM by changing `--flavor AC1_8X60X100` to `--flavor AC2_8X60X100`
 
 ```
-ibmcloud sl vs create --datacenter=lon06 --hostname=p100 --domain=ucb.com --image=2263543 --billing=hourly  --network 1000 --key=<KeyID> --flavor AC1_8X60X100 --san
+ibmcloud sl vs create --datacenter=tok02 --hostname=v100 --domain=ucb.com --image=2263543 --billing=hourly  --network 1000 --key=<KeyID> --flavor AC2_8X60X100 --san
 ```
+
 
 SSH into the VM, then setup s3fs to mount IBM cloud storage.
 
