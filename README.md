@@ -95,9 +95,28 @@ sudo apt-get install python3-libnvinfer
 sudo apt-get install -y --no-install-recommends python3-libnvinfer=7.0.0-1+cuda10.0 python3-libnvinfer-dev=7.0.0-1+cuda10.0 libnvinfer7=7.0.0-1+cuda10.0 libnvinfer-dev=7.0.0-1+cuda10.0
 ```
 
+## Misc
+
 With sudo apt-get update, If you see an error like "The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6ED91CA3AC1160CD"
 ```
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED91CA3AC1160CD
+```
+
+#### Pushing large files into github
+
+Sometimes, model files become larger than 100 MB and in such a case we need to use git lfs to upload those files
+
+```
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+git lfs install
+# cd into the models/model_name/date_timestamp_folder - for example "~/w251-project/models/imgnet_resnet_v2_152/Fri_Jul_24_03_26_57_2020"
+git lfs track "path_to_large_file_from_current_folder"
+# when you do a git status, you will see a .gitattributes file is created
+git add .gitattributes
+git add large_file
+git commit -m "Adding large file"
+git push origin branch
 ```
 
 ## Setup
