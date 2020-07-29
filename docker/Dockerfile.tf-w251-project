@@ -29,7 +29,6 @@ RUN mkdir data
 RUN mkdir w251
 RUN mkdir models
 COPY Demo_v1.ipynb /project
-COPY AudioAugmentation.ipynb /project
 COPY Demo_v2.ipynb /project
 
 EXPOSE 8888
