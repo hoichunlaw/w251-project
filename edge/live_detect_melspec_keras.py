@@ -24,8 +24,8 @@ import os
 
 IM_SIZE = (224,224,3)
 input_saved_model_dir = '/home/carlos/w251-project/models/imgnet_mobilenet_v2_140_224/Fri_Jul_24_02_35_06_2020'
-classes = ["aldfly", "ameavo", "amebit", "amecro", "amegfi", "amekes", "amepip", "amered", "amerob", "amewig", 
-           "amewoo", "amtspa", "annhum", "astfly", "baisan", "baleag", "balori", "banswa", "barswa", "bawwar"]
+BIRDS = ["amered",  "annhum",  "belkin1",  "blugrb1",  "brthum", "cedwax",  "commer",  "gockin",  "gryfly",  "horlar",
+         "moudov",  "olsfly",  "pasfly",  "semsan",  "sposan", "vigswa",  "wewpew",  "whbnut",  "wilsni1",  "yelwar"]
 
 def int_or_str(text):
     """Helper function for argument parsing."""
@@ -128,7 +128,7 @@ try:
                     # print(f"image shape: {x.shape}")
                     x = preprocess_input(np.expand_dims(x, axis=0))
                     preds = the_model.predict(x)
-                    print(f'\nPredicted: {my_decode_predictions(classes, preds, top=5)[0]}\n')
+                    print(f'\nPredicted: {my_decode_predictions(BIRDS, preds, top=5)[0]}\n')
 
         except KeyboardInterrupt:
             pass
@@ -148,4 +148,4 @@ except Exception as e:
 
 # preds = the_model.predict(x)
 # # decode the results into a list of tuples (class, probability)
-# print('Predicted:', my_decode_predictions(classes, preds, top=20)[0])
+# print('Predicted:', my_decode_predictions(BIRDS, preds, top=20)[0])
