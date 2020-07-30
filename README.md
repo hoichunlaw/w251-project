@@ -121,7 +121,7 @@ git push origin branch
 
 #### Pulling down large files from Github
 
-By default, when we do git clone when [git lfs](https://git-lfs.github.com/) is not configured on the machine, then large files (> 100 MB) are not downloaded by default. There are some models (resnet 150 for example, with files like ```variables.data-00000-of-00001```) which have large files which may need to be downloaded as well. This may be required during inference scenarios where we want to download the pb file, and its associated variable files, so we can load the model properly. In such cases, we need to follow the following steps:
+By default, when we do git clone when [git lfs](https://git-lfs.github.com/) is not configured on the machine, then large files (> 100 MB) are not downloaded. There are some models (resnet 150 for example, with files like ```variables.data-00000-of-00001```) which have large files which may need to be downloaded as well. This may be required during inference scenarios where we want to download the pb file, and its associated variable files, so we can load the model properly. In such cases, we need to follow the following steps:
 
 1. Download git lfs on the machine: https://github.com/git-lfs/git-lfs/releases/download/v2.11.0/git-lfs-windows-v2.11.0.exe
 2. git lfs install
