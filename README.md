@@ -126,7 +126,7 @@ By default, when we do git clone when [git lfs](https://git-lfs.github.com/) is 
 1. Download git lfs on the machine: https://github.com/git-lfs/git-lfs/releases/download/v2.11.0/git-lfs-windows-v2.11.0.exe
 2. git lfs install
 3. git clone https://github.com/hoichunlaw/w251-project
-4. This downloads all large files in the repo as well, for example, have a look at ``` /models/imgnet_resnet_v2_152/Wed_Jul_29_03_03_27_2020/variables ```
+4. This downloads all large files in the repo as well, for example, have a look at ``` /models/imgnet_resnet_v2_152/Wed_Jul_29_03_03_27_2020/variables ``` in the cloned repo
 
 ## Setup
 
