@@ -11,9 +11,11 @@ RUN apt-get install -y libsndfile1
 RUN apt-get install -y ffmpeg
 RUN apt-get update
 RUN apt-get install -y git
+RUN apt-get install mediainfo  # to check on audio and picture files
 RUN pip3 install -U pip
 RUN pip3 install git+https://github.com/keunwoochoi/kapre.git
 RUN pip3 install numba==0.48
+RUN pip3 install audiomentations
 RUN pip3 install pandas
 RUN pip3 install -U efficientnet
 RUN pip3 install librosa
@@ -31,14 +33,15 @@ RUN mkdir models
 COPY Demo_v1.ipynb /project
 
 COPY notebooks/AudioAugmentation.ipynb /project
-COPY notebooks/Demo_v1-60Epochs.ipynb /project
-COPY notebooks/Demo_v1-Aug-Base-Plus-FreqShift-Data.ipynb /project
-COPY notebooks/Demo_v1-Aug-Base-Plus-Noise-Data.ipynb /project
-COPY notebooks/Demo_v1-Aug-Base-Plus-Stretch-Data.ipynb /project
-COPY notebooks/Demo_v1-Aug-Base-Plus-TimeShift-Data.ipynb /project
-COPY notebooks/Demo_v1-Base-Data-Run-Aug-Data.ipynb /project
-COPY notebooks/Demo_v1-Base_Data_Run.ipynb /project
+# COPY notebooks/Demo_v1-60Epochs.ipynb /project
+# COPY notebooks/Demo_v1-Aug-Base-Plus-FreqShift-Data.ipynb /project
+# COPY notebooks/Demo_v1-Aug-Base-Plus-Noise-Data.ipynb /project
+# COPY notebooks/Demo_v1-Aug-Base-Plus-Stretch-Data.ipynb /project
+# COPY notebooks/Demo_v1-Aug-Base-Plus-TimeShift-Data.ipynb /project
+# COPY notebooks/Demo_v1-Base-Data-Run-Aug-Data.ipynb /project
+# COPY notebooks/Demo_v1-Base_Data_Run.ipynb /project
 COPY notebooks/Demo_v1-CreateSpectragrams.ipynb /project
+COPY notebooks/CreateSpectragrams-Multisize.ipynb /project
 
 
 
