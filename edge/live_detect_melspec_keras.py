@@ -23,7 +23,7 @@ import numpy as np
 import os
 
 IM_SIZE = (224,224,3)
-input_saved_model_dir = '/home/carlos/w251-project/models/imgnet_mobilenet_v2_140_224/Fri_Jul_24_02_35_06_2020'
+input_saved_model_dir = '/home/carlos/w251-project/models/efficientNet_20'
 BIRDS = ["amered",  "annhum",  "belkin1",  "blugrb1",  "brthum", "cedwax",  "commer",  "gockin",  "gryfly",  "horlar",
          "moudov",  "olsfly",  "pasfly",  "semsan",  "sposan", "vigswa",  "wewpew",  "whbnut",  "wilsni1",  "yelwar"]
 
@@ -100,7 +100,7 @@ try:
     with stream:
         try:
             while True:
-                # print("stream params", stream.blocksize, stream.samplerate, stream.samplesize, stream.latency)
+                #print("stream params", stream.blocksize, stream.samplerate, stream.samplesize, stream.latency)
                 sr=stream.samplerate
                 sd.sleep(3 * 1000)
                 data_raw = [(q.get_nowait()).flatten() for i in range(q.qsize())]
@@ -109,11 +109,11 @@ try:
                 melspec = Melspectrogram(n_dft=1024, 
                                     n_hop=256,
                                     input_shape=(1, frames.shape[0]),
-                                    padding='same', sr=sr, n_mels=224, fmin=1400, fmax=sr/2,
+                                    padding='same', sr=16000, n_mels=224, fmin=1400, fmax=sr/2,
                                     power_melgram=2.0, return_decibel_melgram=True,
                                     trainable_fb=False, trainable_kernel=False)(frames.reshape(1, 1, -1)).numpy()
                 melspec = melspec.reshape(melspec.shape[1], melspec.shape[2])
-                print(f"Frames array: {frames.shape}, Melspec array: {melspec.shape}")
+                print("Frames array: {0}, Melspec array: {1}".format(frames.shape, melspec.shape))
                 melplot = display.specshow(melspec, sr=sr)
                 melplot.set_frame_on(False)
                 plt.tight_layout(pad=0)
